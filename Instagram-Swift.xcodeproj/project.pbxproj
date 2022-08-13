@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		C40A617A28A7CB57005B97A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A617928A7CB57005B97A8 /* AppDelegate.swift */; };
-		C40A617C28A7CB57005B97A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A617B28A7CB57005B97A8 /* SceneDelegate.swift */; };
-		C40A617E28A7CB57005B97A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A617D28A7CB57005B97A8 /* ViewController.swift */; };
-		C40A618128A7CB57005B97A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40A617F28A7CB57005B97A8 /* Main.storyboard */; };
 		C40A618328A7CB58005B97A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40A618228A7CB58005B97A8 /* Assets.xcassets */; };
 		C40A618628A7CB58005B97A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40A618428A7CB58005B97A8 /* LaunchScreen.storyboard */; };
+		C492D33928A8212900C39A24 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33828A8212900C39A24 /* MainController.swift */; };
+		C492D33B28A821C700C39A24 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33A28A821C700C39A24 /* FeedController.swift */; };
+		C492D33D28A8222C00C39A24 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33C28A8222C00C39A24 /* SearchController.swift */; };
+		C492D33F28A8225C00C39A24 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33E28A8225C00C39A24 /* ImageSelectorController.swift */; };
+		C492D34128A8227E00C39A24 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D34028A8227E00C39A24 /* NotificationController.swift */; };
+		C492D34328A8229B00C39A24 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D34228A8229B00C39A24 /* ProfileController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C40A617628A7CB57005B97A8 /* Instagram-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40A617928A7CB57005B97A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C40A617B28A7CB57005B97A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C40A617D28A7CB57005B97A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C40A618028A7CB57005B97A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C40A618228A7CB58005B97A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C40A618528A7CB58005B97A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40A618728A7CB58005B97A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C492D33828A8212900C39A24 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		C492D33A28A821C700C39A24 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		C492D33C28A8222C00C39A24 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		C492D33E28A8225C00C39A24 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
+		C492D34028A8227E00C39A24 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		C492D34228A8229B00C39A24 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,74 @@
 		C40A617828A7CB57005B97A8 /* Instagram-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				C492D33628A820EE00C39A24 /* View */,
+				C492D33528A820E500C39A24 /* ViewModel */,
+				C492D33428A820DF00C39A24 /* Model */,
+				C492D33728A820FE00C39A24 /* API */,
+				C492D33328A820DA00C39A24 /* Utils */,
+				C492D33228A820CE00C39A24 /* Controller */,
+				C492D33128A820BA00C39A24 /* Files */,
+			);
+			path = "Instagram-Swift";
+			sourceTree = "<group>";
+		};
+		C492D33128A820BA00C39A24 /* Files */ = {
+			isa = PBXGroup;
+			children = (
 				C40A617928A7CB57005B97A8 /* AppDelegate.swift */,
-				C40A617B28A7CB57005B97A8 /* SceneDelegate.swift */,
-				C40A617D28A7CB57005B97A8 /* ViewController.swift */,
-				C40A617F28A7CB57005B97A8 /* Main.storyboard */,
 				C40A618228A7CB58005B97A8 /* Assets.xcassets */,
 				C40A618428A7CB58005B97A8 /* LaunchScreen.storyboard */,
 				C40A618728A7CB58005B97A8 /* Info.plist */,
 			);
-			path = "Instagram-Swift";
+			name = Files;
+			sourceTree = "<group>";
+		};
+		C492D33228A820CE00C39A24 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C492D33828A8212900C39A24 /* MainController.swift */,
+				C492D33A28A821C700C39A24 /* FeedController.swift */,
+				C492D33C28A8222C00C39A24 /* SearchController.swift */,
+				C492D33E28A8225C00C39A24 /* ImageSelectorController.swift */,
+				C492D34028A8227E00C39A24 /* NotificationController.swift */,
+				C492D34228A8229B00C39A24 /* ProfileController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C492D33328A820DA00C39A24 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C492D33428A820DF00C39A24 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C492D33528A820E500C39A24 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		C492D33628A820EE00C39A24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C492D33728A820FE00C39A24 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +192,6 @@
 			files = (
 				C40A618628A7CB58005B97A8 /* LaunchScreen.storyboard in Resources */,
 				C40A618328A7CB58005B97A8 /* Assets.xcassets in Resources */,
-				C40A618128A7CB57005B97A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +202,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40A617E28A7CB57005B97A8 /* ViewController.swift in Sources */,
+				C492D34328A8229B00C39A24 /* ProfileController.swift in Sources */,
+				C492D34128A8227E00C39A24 /* NotificationController.swift in Sources */,
+				C492D33928A8212900C39A24 /* MainController.swift in Sources */,
+				C492D33B28A821C700C39A24 /* FeedController.swift in Sources */,
 				C40A617A28A7CB57005B97A8 /* AppDelegate.swift in Sources */,
-				C40A617C28A7CB57005B97A8 /* SceneDelegate.swift in Sources */,
+				C492D33D28A8222C00C39A24 /* SearchController.swift in Sources */,
+				C492D33F28A8225C00C39A24 /* ImageSelectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C40A617F28A7CB57005B97A8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C40A618028A7CB57005B97A8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C40A618428A7CB58005B97A8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +352,6 @@
 				INFOPLIST_FILE = "Instagram-Swift/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +379,6 @@
 				INFOPLIST_FILE = "Instagram-Swift/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
