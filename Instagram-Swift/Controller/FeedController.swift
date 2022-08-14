@@ -22,7 +22,7 @@ class FeedController: UICollectionViewController {
 extension FeedController{
     private func setup(){
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     private func layout(){
         
@@ -34,14 +34,18 @@ extension FeedController{
         return 5
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
+        
         return cell
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FeedController : UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        let width = view.frame.width
+        var height = width + 8 + 40 + 8
+        height += 50
+        height += 60
+        return CGSize(width: width, height: height)
     }
 }
