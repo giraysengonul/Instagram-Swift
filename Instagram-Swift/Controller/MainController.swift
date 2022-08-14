@@ -25,7 +25,12 @@ class MainController: UITabBarController {
 extension MainController{
     
     private func setup(){
-        let feed = templateNavigationController(image: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController())
+        let layout = UICollectionViewFlowLayout()
+        //        layout.minimumLineSpacing  = 10
+        //        layout.minimumInteritemSpacing = 10
+        //        layout.itemSize = CGSize(width: view.frame.width, height: 100)
+        //        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        let feed = templateNavigationController(image: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
         let search =  templateNavigationController(image: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController())
         let imageSelector =  templateNavigationController(image: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController())
         let notification =  templateNavigationController(image: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController())

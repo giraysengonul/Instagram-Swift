@@ -62,15 +62,63 @@
 		C40A617828A7CB57005B97A8 /* Instagram-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				C492D33628A820EE00C39A24 /* View */,
-				C492D33528A820E500C39A24 /* ViewModel */,
-				C492D33428A820DF00C39A24 /* Model */,
-				C492D33728A820FE00C39A24 /* API */,
-				C492D33328A820DA00C39A24 /* Utils */,
-				C492D33228A820CE00C39A24 /* Controller */,
+				C4681DCA28A82ED70026E08B /* ModelView */,
+				C4681DC928A82ED20026E08B /* Model */,
+				C4681DC828A82EC90026E08B /* View */,
+				C4681DCC28A82EE30026E08B /* API */,
+				C4681DCB28A82EDD0026E08B /* Utils */,
+				C4681DC728A82E9E0026E08B /* Controller */,
 				C492D33128A820BA00C39A24 /* Files */,
 			);
 			path = "Instagram-Swift";
+			sourceTree = "<group>";
+		};
+		C4681DC728A82E9E0026E08B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C492D33828A8212900C39A24 /* MainController.swift */,
+				C492D33A28A821C700C39A24 /* FeedController.swift */,
+				C492D33C28A8222C00C39A24 /* SearchController.swift */,
+				C492D33E28A8225C00C39A24 /* ImageSelectorController.swift */,
+				C492D34028A8227E00C39A24 /* NotificationController.swift */,
+				C492D34228A8229B00C39A24 /* ProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C4681DC828A82EC90026E08B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4681DC928A82ED20026E08B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C4681DCA28A82ED70026E08B /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		C4681DCB28A82EDD0026E08B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C4681DCC28A82EE30026E08B /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		C492D33128A820BA00C39A24 /* Files */ = {
@@ -82,54 +130,6 @@
 				C40A618728A7CB58005B97A8 /* Info.plist */,
 			);
 			name = Files;
-			sourceTree = "<group>";
-		};
-		C492D33228A820CE00C39A24 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C492D33828A8212900C39A24 /* MainController.swift */,
-				C492D33A28A821C700C39A24 /* FeedController.swift */,
-				C492D33C28A8222C00C39A24 /* SearchController.swift */,
-				C492D33E28A8225C00C39A24 /* ImageSelectorController.swift */,
-				C492D34028A8227E00C39A24 /* NotificationController.swift */,
-				C492D34228A8229B00C39A24 /* ProfileController.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		C492D33328A820DA00C39A24 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Utils;
-			sourceTree = "<group>";
-		};
-		C492D33428A820DF00C39A24 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		C492D33528A820E500C39A24 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		C492D33628A820EE00C39A24 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		C492D33728A820FE00C39A24 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
