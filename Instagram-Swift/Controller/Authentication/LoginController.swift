@@ -16,56 +16,33 @@ class LoginController: UIViewController {
         return imageView
     }()
     private let emailTextField : UITextField = {
-        let textField = UITextField()
+        let textField = CustomTextField(placeHolder: "Email")
         textField.keyboardType = .emailAddress
         textField.keyboardAppearance = .dark
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        textField.borderStyle = .none
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [.foregroundColor : UIColor(white: 1, alpha: 0.7)])
         return textField
     }()
     private let passwordTextField : UITextField = {
-        let textField = UITextField()
-        textField.keyboardType = .emailAddress
-        textField.keyboardAppearance = .dark
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        textField.borderStyle = .none
-        textField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [.foregroundColor : UIColor(white: 1, alpha: 0.7)])
+        let textField = CustomTextField(placeHolder: "Password")
         textField.isSecureTextEntry = true
         return textField
     }()
     private var stackView = UIStackView()
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .systemPurple
-        button.layer.cornerRadius = 7
+        button.loginAndRegisterButton(withSetTitle: "Log In")
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
         return button
     }()
     private let forgotPasswordButton : UIButton = {
         let button = UIButton(type: .system)
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        let boldAttributes: [NSAttributedString.Key: Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        let attributedTitle = NSMutableAttributedString(string: "Forgot your password?", attributes: attributes)
-        attributedTitle.append(NSAttributedString(string: "  help signing in.", attributes: boldAttributes))
-        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.attributedTitle(withFirstPart: "Forgot your password?", withSecondPart: "Get help signing in.")
         return button
     }()
     private let dontHaveAccountButton : UIButton = {
         let button = UIButton(type: .system)
-        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        let boldAttributes: [NSAttributedString.Key: Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?", attributes: attributes)
-        attributedTitle.append(NSAttributedString(string: " Sign Up", attributes: boldAttributes))
-        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.attributedTitle(withFirstPart: "Don't have an account?", withSecondPart: "Sign Up")
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -81,11 +58,7 @@ class LoginController: UIViewController {
 extension LoginController{
     private func setup(){
         navigationController?.navigationBar.barStyle = .black
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.frame = view.frame
-        gradient.locations = [0,1]
-        view.layer.addSublayer(gradient)
+        configureGradientLayer()
         //iconImageView Setup
         view.addSubview(iconImage)
         iconImage.translatesAutoresizingMaskIntoConstraints = false
@@ -123,5 +96,13 @@ extension LoginController{
             dontHaveAccountButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
         ])
+    }
+}
+// MARK: - ACTIONS
+extension LoginController{
+    @objc func handleShowSignUp(sender: UIButton){
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
+        
     }
 }
