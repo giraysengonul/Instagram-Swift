@@ -33,6 +33,7 @@ extension UIButton{
     func loginAndRegisterButton(withSetTitle setTitleGet: String){
         setTitle(setTitleGet, for: .normal)
         setTitleColor(UIColor.white, for: .normal)
+        backgroundColor = .systemPurple.withAlphaComponent(0.5)
         layer.cornerRadius = 7
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
     }

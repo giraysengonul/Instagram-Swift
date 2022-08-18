@@ -119,9 +119,18 @@ extension LoginController{
         }else {
             loginViewModel.password = sender.text
         }
+        updateForm()
+        
+    }
+    
+}
+// MARK: - FORMVIEWMODEL
+extension LoginController: FormViewModel{
+    func updateForm() {
         loginButton.backgroundColor = loginViewModel.buttonBackgroundColor
         loginButton.setTitleColor(loginViewModel.buttonTitleColor, for: .normal)
         loginButton.isEnabled = loginViewModel.formIsValid
     }
+    
     
 }

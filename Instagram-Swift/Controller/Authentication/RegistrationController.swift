@@ -10,6 +10,7 @@ import UIKit
 
 class RegistrationController: UIViewController {
     // MARK: - PROPERTIES
+    private var registrationViewModel = RegistrationViewModel()
     private let plusPhotoButton : UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "plus_photo")
@@ -53,6 +54,7 @@ class RegistrationController: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
+        configureNotificationObserves()
     }
 }
 
@@ -102,10 +104,39 @@ extension RegistrationController{
             
         ])
     }
+    func configureNotificationObserves(){
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
 }
 // MARK: - ACTIONS
 extension RegistrationController{
     @objc func handleShowLogIn(){
         navigationController?.popViewController(animated: true)
     }
+    @objc func textDidChange(sender: UITextField){
+        if sender == emailTextField{
+            registrationViewModel.email = sender.text
+        }else if sender == passwordTextField{
+            registrationViewModel.password = sender.text
+        }else if sender == fullnameTextField{
+            registrationViewModel.fullname = sender.text
+        }
+        else if sender == usernameTextField{
+            registrationViewModel.username = sender.text
+        }
+        updateForm()
+    }
+}
+// MARK: - FORMMODELVIEW
+extension RegistrationController: FormViewModel{
+    func updateForm() {
+        signUpButton.backgroundColor = registrationViewModel.buttonBackgroundColor
+        signUpButton.setTitleColor(registrationViewModel.buttonTitleColor, for: .normal)
+        signUpButton.isEnabled = registrationViewModel.formIsValid
+    }
+    
+    
 }
