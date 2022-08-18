@@ -16,6 +16,7 @@ class RegistrationController: UIViewController {
         let image = #imageLiteral(resourceName: "plus_photo")
         button.setImage(image, for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(handleProfilPhotoSelect), for: .touchUpInside)
         return button
     }()
     private let emailTextField : UITextField = {
@@ -129,6 +130,12 @@ extension RegistrationController{
         }
         updateForm()
     }
+    @objc func handleProfilPhotoSelect(_ sender: UIButton){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
 }
 // MARK: - FORMMODELVIEW
 extension RegistrationController: FormViewModel{
@@ -137,6 +144,16 @@ extension RegistrationController: FormViewModel{
         signUpButton.setTitleColor(registrationViewModel.buttonTitleColor, for: .normal)
         signUpButton.isEnabled = registrationViewModel.formIsValid
     }
-    
-    
+}
+// MARK: - ImagePickerController
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let profileImage = info[.editedImage] as? UIImage else { return  }
+        plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        plusPhotoButton.clipsToBounds = true
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 2
+        dismiss(animated: true)
+    }
 }
