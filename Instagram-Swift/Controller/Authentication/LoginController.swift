@@ -9,6 +9,7 @@ import UIKit
 
 class LoginController: UIViewController {
     // MARK: - PROPERTIES
+    private var loginViewModel = LoginViewModel()
     private let iconImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "Instagram_logo_white")
@@ -32,6 +33,8 @@ class LoginController: UIViewController {
         button.loginAndRegisterButton(withSetTitle: "Log In")
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemPurple.withAlphaComponent(0.5)
+        button.isEnabled = false
         return button
     }()
     private let forgotPasswordButton : UIButton = {
@@ -51,6 +54,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
+        configureNotificationObserves()
     }
 }
 
@@ -97,6 +101,10 @@ extension LoginController{
             
         ])
     }
+    func configureNotificationObserves(){
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
 }
 // MARK: - ACTIONS
 extension LoginController{
@@ -105,4 +113,15 @@ extension LoginController{
         navigationController?.pushViewController(controller, animated: true)
         
     }
+    @objc func textDidChange(sender: UITextField){
+        if sender == emailTextField{
+            loginViewModel.email = sender.text
+        }else {
+            loginViewModel.password = sender.text
+        }
+        loginButton.backgroundColor = loginViewModel.buttonBackgroundColor
+        loginButton.setTitleColor(loginViewModel.buttonTitleColor, for: .normal)
+        loginButton.isEnabled = loginViewModel.formIsValid
+    }
+    
 }

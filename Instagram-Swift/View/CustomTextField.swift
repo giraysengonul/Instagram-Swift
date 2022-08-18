@@ -26,14 +26,14 @@ extension CustomTextField{
         spacer.widthAnchor.constraint(equalToConstant: 12).isActive = true
         leftView = spacer
         leftViewMode = .always
-        
         keyboardType = .emailAddress
         keyboardAppearance = .dark
         backgroundColor = UIColor(white: 1, alpha: 0.1)
         borderStyle = .none
+        textColor = .white
         heightAnchor.constraint(equalToConstant: 50).isActive = true
         translatesAutoresizingMaskIntoConstraints = false
-        attributedPlaceholder = NSAttributedString(string: placeHolderNew, attributes: [.foregroundColor : UIColor(white: 1, alpha: 0.7)])
+        attributedPlaceholder = NSAttributedString(string: placeHolderNew, attributes: [.foregroundColor : UIColor(white: 1, alpha: 0.87)])
         
         
     }

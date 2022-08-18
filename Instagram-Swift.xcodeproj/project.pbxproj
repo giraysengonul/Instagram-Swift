@@ -10,6 +10,7 @@
 		C40A617A28A7CB57005B97A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40A617928A7CB57005B97A8 /* AppDelegate.swift */; };
 		C40A618328A7CB58005B97A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40A618228A7CB58005B97A8 /* Assets.xcassets */; };
 		C40A618628A7CB58005B97A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40A618428A7CB58005B97A8 /* LaunchScreen.storyboard */; };
+		C411542B28AE6BC500A0474D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C411542A28AE6BC500A0474D /* AuthenticationViewModel.swift */; };
 		C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E0BBE28A9818600570E7B /* FeedCell.swift */; };
 		C492D33928A8212900C39A24 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33828A8212900C39A24 /* MainController.swift */; };
 		C492D33B28A821C700C39A24 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33A28A821C700C39A24 /* FeedController.swift */; };
@@ -29,6 +30,7 @@
 		C40A618228A7CB58005B97A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C40A618528A7CB58005B97A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40A618728A7CB58005B97A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C411542A28AE6BC500A0474D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C43E0BBE28A9818600570E7B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C492D33828A8212900C39A24 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		C492D33A28A821C700C39A24 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
@@ -72,7 +74,7 @@
 		C40A617828A7CB57005B97A8 /* Instagram-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				C4681DCA28A82ED70026E08B /* ModelView */,
+				C4681DCA28A82ED70026E08B /* ViewModel */,
 				C4681DC928A82ED20026E08B /* Model */,
 				C4681DC828A82EC90026E08B /* View */,
 				C4681DCC28A82EE30026E08B /* API */,
@@ -113,11 +115,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C4681DCA28A82ED70026E08B /* ModelView */ = {
+		C4681DCA28A82ED70026E08B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C411542A28AE6BC500A0474D /* AuthenticationViewModel.swift */,
 			);
-			path = ModelView;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C4681DCB28A82EDD0026E08B /* Utils */ = {
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C411542B28AE6BC500A0474D /* AuthenticationViewModel.swift in Sources */,
 				C492D34328A8229B00C39A24 /* ProfileController.swift in Sources */,
 				C49AB6AB28AD578B00CEFE50 /* CustomTextField.swift in Sources */,
 				C492D34128A8227E00C39A24 /* NotificationController.swift in Sources */,
