@@ -11,6 +11,7 @@ import UIKit
 class RegistrationController: UIViewController {
     // MARK: - PROPERTIES
     private var registrationViewModel = RegistrationViewModel()
+    private var selectedProfileImage: UIImage?
     private let plusPhotoButton : UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "plus_photo")
@@ -39,9 +40,11 @@ class RegistrationController: UIViewController {
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.loginAndRegisterButton(withSetTitle: "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.backgroundColor = .systemPurple.withAlphaComponent(0.5)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+        button.isEnabled = false
         return button
     }()
     private let alreadyHaveAccountButton : UIButton = {
@@ -136,6 +139,15 @@ extension RegistrationController{
         picker.allowsEditing = true
         present(picker, animated: true)
     }
+    @objc func handleSignUp(_ sender: UIButton){
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else{ return }
+        guard let fullname = fullnameTextField.text else{ return }
+        guard let username = usernameTextField.text else{ return }
+        guard let profileImage = selectedProfileImage else { return }
+        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+        AuthService.registerUser(withCredential: credentials)
+    }
 }
 // MARK: - FORMMODELVIEW
 extension RegistrationController: FormViewModel{
@@ -149,6 +161,7 @@ extension RegistrationController: FormViewModel{
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else { return  }
+        selectedProfileImage = profileImage
         plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         plusPhotoButton.clipsToBounds = true
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
