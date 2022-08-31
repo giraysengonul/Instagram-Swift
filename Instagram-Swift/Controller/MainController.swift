@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class MainController: UITabBarController {
     // MARK: - PROPERTIES
     
@@ -17,10 +17,12 @@ class MainController: UITabBarController {
         setup()
         view.backgroundColor = .white
         tabBar.tintColor = .black
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        checkIfUserIsLoggedIn()
     }
 }
-
-
 // MARK: - HELPERS
 extension MainController{
     
@@ -57,4 +59,17 @@ extension MainController{
         return nav
     }
     
+}
+// MARK: - API
+extension MainController{
+    func checkIfUserIsLoggedIn(){
+        if Auth.auth().currentUser == nil{
+            DispatchQueue.main.async {
+                let controller = LoginController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
+    }
 }

@@ -35,6 +35,7 @@ class LoginController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemPurple.withAlphaComponent(0.5)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
     private let forgotPasswordButton : UIButton = {
@@ -108,12 +109,12 @@ extension LoginController{
 }
 // MARK: - ACTIONS
 extension LoginController{
-    @objc func handleShowSignUp(sender: UIButton){
+    @objc func handleShowSignUp(_ sender: UIButton){
         let controller = RegistrationController()
         navigationController?.pushViewController(controller, animated: true)
         
     }
-    @objc func textDidChange(sender: UITextField){
+    @objc func textDidChange(_ sender: UITextField){
         if sender == emailTextField{
             loginViewModel.email = sender.text
         }else {
@@ -121,6 +122,17 @@ extension LoginController{
         }
         updateForm()
         
+    }
+    @objc func handleLogin(_ sender: UIButton){
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        AuthService.logUserIn(withEmail: email, withPassword: password) { result, error in
+            if let error = error {
+                print("Failed to log user in\(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true)
+        }
     }
     
 }
