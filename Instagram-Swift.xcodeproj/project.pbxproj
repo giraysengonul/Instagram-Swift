@@ -15,6 +15,8 @@
 		C41BC7BA28B2901B000825D1 /* Imageuploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BC7B928B2901B000825D1 /* Imageuploader.swift */; };
 		C41BC7BC28B2902E000825D1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BC7BB28B2902E000825D1 /* AuthService.swift */; };
 		C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E0BBE28A9818600570E7B /* FeedCell.swift */; };
+		C465A8C528C0E6BC006C4CD6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465A8C428C0E6BC006C4CD6 /* ProfileCell.swift */; };
+		C465A8C728C0E6D5006C4CD6 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465A8C628C0E6D5006C4CD6 /* ProfileHeader.swift */; };
 		C492D33928A8212900C39A24 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33828A8212900C39A24 /* MainController.swift */; };
 		C492D33B28A821C700C39A24 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33A28A821C700C39A24 /* FeedController.swift */; };
 		C492D33D28A8222C00C39A24 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492D33C28A8222C00C39A24 /* SearchController.swift */; };
@@ -41,6 +43,8 @@
 		C41BC7B928B2901B000825D1 /* Imageuploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imageuploader.swift; sourceTree = "<group>"; };
 		C41BC7BB28B2902E000825D1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		C43E0BBE28A9818600570E7B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		C465A8C428C0E6BC006C4CD6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		C465A8C628C0E6D5006C4CD6 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		C492D33828A8212900C39A24 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		C492D33A28A821C700C39A24 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		C492D33C28A8222C00C39A24 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 		C40A617828A7CB57005B97A8 /* Instagram-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */,
 				C4681DCA28A82ED70026E08B /* ViewModel */,
 				C4681DC928A82ED20026E08B /* Model */,
 				C4681DC828A82EC90026E08B /* View */,
@@ -114,6 +117,15 @@
 				C492D33128A820BA00C39A24 /* Files */,
 			);
 			path = "Instagram-Swift";
+			sourceTree = "<group>";
+		};
+		C465A8C828C0E6E9006C4CD6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C465A8C428C0E6BC006C4CD6 /* ProfileCell.swift */,
+				C465A8C628C0E6D5006C4CD6 /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C4681DC728A82E9E0026E08B /* Controller */ = {
@@ -135,6 +147,7 @@
 			children = (
 				C43E0BBE28A9818600570E7B /* FeedCell.swift */,
 				C49AB6AA28AD578B00CEFE50 /* CustomTextField.swift */,
+				C465A8C828C0E6E9006C4CD6 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +191,7 @@
 				C40A618228A7CB58005B97A8 /* Assets.xcassets */,
 				C40A618428A7CB58005B97A8 /* LaunchScreen.storyboard */,
 				C40A618728A7CB58005B97A8 /* Info.plist */,
+				C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */,
 			);
 			name = Files;
 			sourceTree = "<group>";
@@ -316,9 +330,11 @@
 				C492D33B28A821C700C39A24 /* FeedController.swift in Sources */,
 				C49D050C28AAB98A004CA067 /* LoginController.swift in Sources */,
 				C40A617A28A7CB57005B97A8 /* AppDelegate.swift in Sources */,
+				C465A8C728C0E6D5006C4CD6 /* ProfileHeader.swift in Sources */,
 				C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */,
 				C492D33D28A8222C00C39A24 /* SearchController.swift in Sources */,
 				C41BC7BC28B2902E000825D1 /* AuthService.swift in Sources */,
+				C465A8C528C0E6BC006C4CD6 /* ProfileCell.swift in Sources */,
 				C49D050E28AAB994004CA067 /* RegistrationController.swift in Sources */,
 				C492D33F28A8225C00C39A24 /* ImageSelectorController.swift in Sources */,
 			);

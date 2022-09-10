@@ -28,6 +28,7 @@ extension MainController{
     
     private func setup(){
         let layout = UICollectionViewFlowLayout()
+        let profileLayout = UICollectionViewFlowLayout()
         //        layout.minimumLineSpacing  = 10
         //        layout.minimumInteritemSpacing = 10
         //        layout.itemSize = CGSize(width: view.frame.width, height: 100)
@@ -36,7 +37,7 @@ extension MainController{
         let search =  templateNavigationController(image: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController())
         let imageSelector =  templateNavigationController(image: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController())
         let notification =  templateNavigationController(image: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController())
-        let profile =  templateNavigationController(image: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_unselected"), rootViewController: ProfileController())
+        let profile =  templateNavigationController(image: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_unselected"), rootViewController: ProfileController(collectionViewLayout: profileLayout))
         
         viewControllers = [feed, search, imageSelector, notification, profile]
     }
