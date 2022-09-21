@@ -11,16 +11,25 @@ private let cellIdentifier = "ProfileCell"
 private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController {
     // MARK: - PROPERTIES
-    
+    var user: User? {
+        didSet{
+            navigationItem.title = user?.username
+        }
+    }
     // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         layout()
+        fetchUser()
     }
-    
+    // MARK: - API
+    func fetchUser() {
+        UserService.fetchUser { user in
+            self.user = user
+        }
+    }
 }
-
 // MARK: - HELPERS
 extension ProfileController{
     private func setup(){
@@ -31,7 +40,7 @@ extension ProfileController{
         
     }
 }
- // MARK: - UICollectionViewDataSource and UICollectionViewDelegate
+// MARK: - UICollectionViewDataSource and UICollectionViewDelegate
 extension ProfileController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9
@@ -47,7 +56,7 @@ extension ProfileController{
         return header
     }
     
- 
+    
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ProfileController: UICollectionViewDelegateFlowLayout{
