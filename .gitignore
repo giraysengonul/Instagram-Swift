@@ -44,9 +44,7 @@ DerivedData/
 
 !default.perspectivev3
 
-Pods/
-Podfile.lock
-Podfile
+
 Instagram-Swift/GoogleService-Info.plist
 ## Obj-C/Swift specific
 

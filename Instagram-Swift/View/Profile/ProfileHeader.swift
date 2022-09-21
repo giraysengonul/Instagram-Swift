@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import SDWebImage
+
 class ProfileHeader: UICollectionReusableView {
     // MARK: - Properties
+    var viewmodel: ProfileHeaderViewModel?{
+        didSet{
+            configure()
+        }
+    }
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
-        let image = #imageLiteral(resourceName: "venom-7")
-        imageView.image = image
+        imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 80 / 2
@@ -19,7 +25,6 @@ class ProfileHeader: UICollectionReusableView {
     }()
     private let nameLabel : UILabel = {
         let label = UILabel()
-        label.text = "Hakkı Can ŞENGÖNÜL"
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -189,6 +194,11 @@ extension ProfileHeader{
         let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font : UIFont.systemFont(ofSize: 14, weight: .bold)])
         attributedText.append(NSAttributedString(string: label, attributes: [.font : UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor : UIColor.lightGray]))
         return attributedText
+    }
+    func configure() {
+        guard let viewModel = viewmodel else { return }
+        nameLabel.text = viewModel.fullname
+        profileImage.sd_setImage(with: viewModel.profileImageUrl)
     }
 }
 // MARK: - Actions, Selector
