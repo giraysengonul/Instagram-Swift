@@ -9,26 +9,27 @@ import UIKit
 import FirebaseAuth
 class MainController: UITabBarController {
     // MARK: - PROPERTIES
-    
-    
+    private var user: User?{
+        didSet{
+            guard let user = user else { return }
+            setup(withUser: user) }
+    }
     // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         view.backgroundColor = .white
         tabBar.tintColor = .black
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         checkIfUserIsLoggedIn()
+        fetchUser()
     }
 }
 // MARK: - HELPERS
 extension MainController{
     
-    private func setup(){
+    private func setup(withUser user: User){
         let layout = UICollectionViewFlowLayout()
-        let profileLayout = UICollectionViewFlowLayout()
         //        layout.minimumLineSpacing  = 10
         //        layout.minimumInteritemSpacing = 10
         //        layout.itemSize = CGSize(width: view.frame.width, height: 100)
@@ -37,7 +38,8 @@ extension MainController{
         let search =  templateNavigationController(image: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController())
         let imageSelector =  templateNavigationController(image: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController())
         let notification =  templateNavigationController(image: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController())
-        let profile =  templateNavigationController(image: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_unselected"), rootViewController: ProfileController(collectionViewLayout: profileLayout))
+        let profileController = ProfileController(user: user)
+        let profile =  templateNavigationController(image: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_unselected"), rootViewController: profileController)
         
         viewControllers = [feed, search, imageSelector, notification, profile]
     }
@@ -56,6 +58,7 @@ extension MainController{
         nav.navigationBar.standardAppearance = navigationAppearance
         nav.navigationBar.scrollEdgeAppearance = navigationAppearance
         nav.navigationBar.compactAppearance = navigationAppearance
+        nav.navigationBar.compactScrollEdgeAppearance = navigationAppearance
         
         return nav
     }
@@ -63,14 +66,28 @@ extension MainController{
 }
 // MARK: - API
 extension MainController{
+    func fetchUser() {
+        UserService.fetchUser { user in
+            self.user = user
+            
+        }
+    }
     func checkIfUserIsLoggedIn(){
         if Auth.auth().currentUser == nil{
             DispatchQueue.main.async {
                 let controller = LoginController()
+                controller.delegate = self
                 let nav = UINavigationController(rootViewController: controller)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)
             }
         }
+    }
+}
+// MARK: - AuthenticationDelegate
+extension MainController: AuthenticationDelegate{
+    func authenticationDidComplete() {
+        fetchUser()
+        self.dismiss(animated: true)
     }
 }

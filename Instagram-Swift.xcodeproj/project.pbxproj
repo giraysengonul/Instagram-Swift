@@ -153,9 +153,9 @@
 		C4681DC828A82EC90026E08B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C465A8C828C0E6E9006C4CD6 /* Profile */,
 				C43E0BBE28A9818600570E7B /* FeedCell.swift */,
 				C49AB6AA28AD578B00CEFE50 /* CustomTextField.swift */,
-				C465A8C828C0E6E9006C4CD6 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";

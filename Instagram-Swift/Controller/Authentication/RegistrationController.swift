@@ -12,7 +12,8 @@ class RegistrationController: UIViewController {
     // MARK: - PROPERTIES
     private var registrationViewModel = RegistrationViewModel()
     private var selectedProfileImage: UIImage?
-    private let plusPhotoButton : UIButton = {
+    weak var delegate: AuthenticationDelegate?
+    private lazy var plusPhotoButton : UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "plus_photo")
         button.setImage(image, for: .normal)
@@ -37,7 +38,7 @@ class RegistrationController: UIViewController {
     
     private var stackView = UIStackView()
     
-    private let signUpButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.loginAndRegisterButton(withSetTitle: "Sign Up")
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
@@ -47,7 +48,7 @@ class RegistrationController: UIViewController {
         button.isEnabled = false
         return button
     }()
-    private let alreadyHaveAccountButton : UIButton = {
+    private lazy var alreadyHaveAccountButton : UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(withFirstPart: "Already have an account?", withSecondPart: "Log In")
         button.addTarget(self, action: #selector(handleShowLogIn), for: .touchUpInside)
@@ -152,7 +153,7 @@ extension RegistrationController{
                 return
             }
             print("Successfully registered user with firestore...")
-            self.dismiss(animated: true)
+            self.delegate?.authenticationDidComplete()
         }
     }
 }

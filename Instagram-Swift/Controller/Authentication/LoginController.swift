@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationDidComplete()
+}
 class LoginController: UIViewController {
     // MARK: - PROPERTIES
+    weak var delegate: AuthenticationDelegate?
     private var loginViewModel = LoginViewModel()
     private let iconImage: UIImageView = {
         let imageView = UIImageView()
@@ -28,7 +31,7 @@ class LoginController: UIViewController {
         return textField
     }()
     private var stackView = UIStackView()
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.loginAndRegisterButton(withSetTitle: "Log In")
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -43,7 +46,7 @@ class LoginController: UIViewController {
         button.attributedTitle(withFirstPart: "Forgot your password?", withSecondPart: "Get help signing in.")
         return button
     }()
-    private let dontHaveAccountButton : UIButton = {
+    private lazy var dontHaveAccountButton : UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(withFirstPart: "Don't have an account?", withSecondPart: "Sign Up")
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
@@ -111,6 +114,7 @@ extension LoginController{
 extension LoginController{
     @objc func handleShowSignUp(_ sender: UIButton){
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
         
     }
@@ -131,7 +135,7 @@ extension LoginController{
                 print("Failed to log user in\(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true)
+            self.delegate?.authenticationDidComplete()
         }
     }
     
