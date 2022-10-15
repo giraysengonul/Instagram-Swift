@@ -33,6 +33,7 @@
 		C49D050C28AAB98A004CA067 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D050B28AAB98A004CA067 /* LoginController.swift */; };
 		C49D050E28AAB994004CA067 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D050D28AAB994004CA067 /* RegistrationController.swift */; };
 		C4AD42B728B25C6700F0AC44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */; };
+		C4EF094E28FB10F200DCEB45 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		C49D050B28AAB98A004CA067 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C49D050D28AAB994004CA067 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			children = (
 				C411542A28AE6BC500A0474D /* AuthenticationViewModel.swift */,
 				C430E32E28DB2A5B00DB0055 /* ProfileHeaderViewModel.swift */,
+				C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4EF094E28FB10F200DCEB45 /* UserCellViewModel.swift in Sources */,
 				C411542B28AE6BC500A0474D /* AuthenticationViewModel.swift in Sources */,
 				C430E32B28DB1C9E00DB0055 /* Constants.swift in Sources */,
 				C492D34328A8229B00C39A24 /* ProfileController.swift in Sources */,

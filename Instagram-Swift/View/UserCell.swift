@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 class UserCell: UITableViewCell {
     // MARK: - Properties
+    var viewModel: UserCellViewModel?{
+        didSet{ configure() }
+    }
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -69,5 +73,11 @@ extension UserCell{
             stackView.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
             stackView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8)
         ])
+    }
+    private func configure() {
+        guard let viewModel = viewModel else{ return }
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        usernameLabel.text = viewModel.username
+        fullnameLabel.text = viewModel.fullname
     }
 }
