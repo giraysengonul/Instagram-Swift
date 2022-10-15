@@ -6,25 +6,38 @@
 //
 
 import UIKit
-
-class SearchController: UIViewController {
+private let reuseIdentifier = "UserCell"
+class SearchController: UITableViewController {
     // MARK: - PROPERTIES
     
     // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        style()
         layout()
     }
 }
 
 // MARK: - HELPERS
 extension SearchController{
-    private func setup(){
-        
+    private func style(){
+        view.backgroundColor = .white
+        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 64
+        tableView.separatorStyle = .none
     }
     private func layout(){
         
     }
 }
-
+// MARK: - UITableViewDataSource
+extension SearchController{
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
+        return cell
+    }
+    
+}
