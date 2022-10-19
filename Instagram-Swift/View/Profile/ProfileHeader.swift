@@ -48,21 +48,18 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedStatText(value: 3, label: "posts")
         return label
     }()
     private lazy var followersLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedStatText(value: 2, label: "followers")
         return label
     }()
     private lazy var followingLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.attributedText = attributedStatText(value: 1, label: "following")
         return label
     }()
     private let topDivider = UIView()
@@ -193,11 +190,7 @@ extension ProfileHeader{
             bottomDivider.heightAnchor.constraint(equalToConstant: 0.5)
         ])
     }
-    func attributedStatText(value: Int, label: String) -> NSMutableAttributedString{
-        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font : UIFont.systemFont(ofSize: 14, weight: .bold)])
-        attributedText.append(NSAttributedString(string: label, attributes: [.font : UIFont.systemFont(ofSize: 14, weight: .medium), .foregroundColor : UIColor.lightGray]))
-        return attributedText
-    }
+    
     func configure() {
         guard let viewModel = viewModel else { return }
         nameLabel.text = viewModel.fullname
@@ -205,6 +198,9 @@ extension ProfileHeader{
         editProfileFollowButton.setTitle(viewModel.fallowButtonText, for: .normal)
         editProfileFollowButton.setTitleColor(viewModel.followButtontextColor, for: .normal)
         editProfileFollowButton.backgroundColor = viewModel.followButtonBackgroundColor
+        postsLabel.attributedText = viewModel.numberOfPosts
+        followersLabel.attributedText = viewModel.numberOfFollowers
+        followingLabel.attributedText = viewModel.numberOfFollowing
     }
 }
 // MARK: - Actions, Selector
