@@ -7,14 +7,17 @@
 
 import UIKit
 import SDWebImage
-
+protocol ProfileHeaderDelegate: AnyObject{
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User)
+}
 class ProfileHeader: UICollectionReusableView {
     // MARK: - Properties
-    var viewmodel: ProfileHeaderViewModel?{
+    var viewModel: ProfileHeaderViewModel?{
         didSet{
             configure()
         }
     }
+    weak var delegate: ProfileHeaderDelegate?
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
@@ -31,7 +34,7 @@ class ProfileHeader: UICollectionReusableView {
     }()
     private lazy var editProfileFollowButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Edit Profile", for: .normal)
+        button.setTitle("Loading", for: .normal)
         button.layer.cornerRadius = 3
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 0.5
@@ -196,14 +199,18 @@ extension ProfileHeader{
         return attributedText
     }
     func configure() {
-        guard let viewModel = viewmodel else { return }
+        guard let viewModel = viewModel else { return }
         nameLabel.text = viewModel.fullname
         profileImage.sd_setImage(with: viewModel.profileImageUrl)
+        editProfileFollowButton.setTitle(viewModel.fallowButtonText, for: .normal)
+        editProfileFollowButton.setTitleColor(viewModel.followButtontextColor, for: .normal)
+        editProfileFollowButton.backgroundColor = viewModel.followButtonBackgroundColor
     }
 }
 // MARK: - Actions, Selector
 extension ProfileHeader{
     @objc func handleEditProfileFollowTapped(_ sender: UIButton){
-        
+        guard let viewModel = viewModel else { return  }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
 }
