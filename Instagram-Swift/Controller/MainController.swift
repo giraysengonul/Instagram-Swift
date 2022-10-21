@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import YPImagePicker
 class MainController: UITabBarController {
     // MARK: - PROPERTIES
     private var user: User?{
@@ -29,6 +30,7 @@ class MainController: UITabBarController {
 extension MainController{
     
     private func setup(withUser user: User){
+        self.delegate = self
         let layout = UICollectionViewFlowLayout()
         //        layout.minimumLineSpacing  = 10
         //        layout.minimumInteritemSpacing = 10
@@ -62,6 +64,14 @@ extension MainController{
         
         return nav
     }
+    private func didFinishPickingMedia(_ picker: YPImagePicker){
+        picker.didFinishPicking { items, cancelled in
+            picker.dismiss(animated: true) {
+                guard let selectedImage = items.singlePhoto?.image else{ return }
+                
+            }
+        }
+    }
     
 }
 // MARK: - API
@@ -89,5 +99,27 @@ extension MainController: AuthenticationDelegate{
     func authenticationDidComplete() {
         fetchUser()
         self.dismiss(animated: true)
+    }
+}
+// MARK: - UITabBarControllerDelegate
+extension MainController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.hidesBottomBar = false
+            config.hidesStatusBar = false
+            config.library.maxNumberOfItems = 1
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true)
+            didFinishPickingMedia(picker)
+            
+        }
+        return true
     }
 }
