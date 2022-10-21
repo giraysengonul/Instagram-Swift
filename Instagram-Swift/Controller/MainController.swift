@@ -68,7 +68,10 @@ extension MainController{
         picker.didFinishPicking { items, cancelled in
             picker.dismiss(animated: true) {
                 guard let selectedImage = items.singlePhoto?.image else{ return }
-                
+                let controller = UploadPostController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
             }
         }
     }
@@ -118,7 +121,6 @@ extension MainController: UITabBarControllerDelegate {
             picker.modalPresentationStyle = .fullScreen
             present(picker, animated: true)
             didFinishPickingMedia(picker)
-            
         }
         return true
     }

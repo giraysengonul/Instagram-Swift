@@ -22,7 +22,7 @@ class ImageSelectorController: UIViewController {
 // MARK: - HELPERS
 extension ImageSelectorController{
     private func setup(){
-        
+        view.backgroundColor = .white
     }
     private func layout(){
         
