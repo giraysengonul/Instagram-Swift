@@ -21,8 +21,11 @@ class UploadPostController: UIViewController {
         label.text = "0/100"
         return label
     }()
-    private let captionTextView: UITextView = {
-        let textView = UITextView()
+    private lazy var captionTextView: InputTextView = {
+        let textView = InputTextView()
+        textView.placeholdertext = "Enter caption.."
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.delegate = self
         return textView
     }()
     // MARK: - Lifecycle
@@ -68,9 +71,14 @@ extension UploadPostController{
         ])
         //characterCountLabel layout
         NSLayoutConstraint.activate([
-            captionTextView.bottomAnchor.constraint(equalTo: characterCountLabel.bottomAnchor),
+            captionTextView.bottomAnchor.constraint(equalTo: characterCountLabel.bottomAnchor,constant: -8),
             view.trailingAnchor.constraint(equalTo: characterCountLabel.trailingAnchor, constant: 12),
         ])
+    }
+    private func checkMaxLength(_ textView: UITextView){
+        if (textView.text.count) > 100 {
+            textView.deleteBackward()
+        }
     }
 }
 // MARK: - Selector
@@ -80,5 +88,13 @@ extension UploadPostController{
     }
     @objc func didTapDone(_ sender: UIBarButtonItem){
         print("Share")
+    }
+}
+// MARK: - UITextViewDelegate
+extension UploadPostController: UITextViewDelegate{
+    func textViewDidChange(_ textView: UITextView) {
+        checkMaxLength(textView)
+        let count = textView.text.count
+        characterCountLabel.text = "\(count)/100"
     }
 }
