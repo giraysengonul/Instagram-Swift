@@ -6,8 +6,15 @@
 //
 
 import UIKit
+protocol UploadPostControllerDelegate: AnyObject {
+    func controllerDidFinishUploadingPost(_ controller: UploadPostController)
+}
 class UploadPostController: UIViewController {
     // MARK: - Properties
+    weak var delegate: UploadPostControllerDelegate?
+    var selectedImage: UIImage?{
+        didSet{ photoImageView.image = selectedImage }
+    }
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -87,7 +94,15 @@ extension UploadPostController{
         dismiss(animated: true)
     }
     @objc func didTapDone(_ sender: UIBarButtonItem){
-        print("Share")
+        guard let image = selectedImage else{ return }
+        guard let caption = captionTextView.text else { return }
+        PostService.uploadPost(caption: caption, image: image) { error in
+            if let error = error{
+                print("Failed to upload post with error \(error.localizedDescription)")
+                return
+            }
+            self.delegate?.controllerDidFinishUploadingPost(self)
+        }
     }
 }
 // MARK: - UITextViewDelegate
