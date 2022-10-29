@@ -10,15 +10,23 @@ import FirebaseAuth
 private let reuseIdentifier = "Cell"
 class FeedController: UICollectionViewController {
     // MARK: - PROPERTIES
-    
+    private var posts: [Post]? {
+        didSet{ self.collectionView.reloadData() }
+    }
     // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         layout()
+        fetchPosts()
+    }
+    // MARK: - API
+    private func fetchPosts(){
+        PostService.fetchPosts { posts in
+            self.posts = posts
+        }
     }
 }
-
 // MARK: - HELPERS
 extension FeedController{
     private func setup(){
@@ -35,7 +43,8 @@ extension FeedController{
 // MARK: - UICollectionViewDataSource
 extension FeedController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        guard let posts = posts else{ return 0 }
+        return posts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
