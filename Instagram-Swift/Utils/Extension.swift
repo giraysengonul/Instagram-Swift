@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 extension UIViewController{
+    static let hud = JGProgressHUD(style: .dark)
+    
     func configureGradientLayer()  {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
@@ -15,9 +18,15 @@ extension UIViewController{
         gradient.frame = view.frame
         view.layer.addSublayer(gradient)
     }
+    func showLoader(_ show: Bool){
+        view.endEditing(true)
+        if show{
+            UIViewController.hud.show(in: view,animated: true)
+        }else{
+            UIViewController.hud.dismiss(animated: true)
+        }
+    }
 }
-
-
 extension UIButton{
     
     func attributedTitle(withFirstPart firstPart: String, withSecondPart secondPart: String) {
