@@ -9,13 +9,15 @@ import UIKit
 
 class FeedCell: UICollectionViewCell {
     // MARK: - PROPERTIES
+    var viewModel: PostViewModel?{
+        didSet{ configure() }
+    }
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         imageView.image = #imageLiteral(resourceName: "venom-7")
-        
         return imageView
     }()
     private lazy var usernameButton: UIButton = {
@@ -83,12 +85,9 @@ class FeedCell: UICollectionViewCell {
         setup()
         layout()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
 // MARK: - HELPERS
 extension FeedCell{
@@ -118,7 +117,6 @@ extension FeedCell{
         //postTimeLabel Setup
         addSubview(postTimeLabel)
         postTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
     }
     private func layout(){
         //profileImageView Layout
@@ -127,7 +125,6 @@ extension FeedCell{
             profileImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
             profileImageView.widthAnchor.constraint(equalToConstant: 40),
             profileImageView.heightAnchor.constraint(equalToConstant: 40),
-            
         ])
         //usernameButton Layout
         NSLayoutConstraint.activate([
@@ -136,49 +133,42 @@ extension FeedCell{
         ])
         //postImageView Layout
         NSLayoutConstraint.activate([
-            
             postImageView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 8),
             postImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             postImageView.heightAnchor.constraint(equalTo: widthAnchor)
-            
         ])
         //stackView Layout
         NSLayoutConstraint.activate([
-            
             stackView.topAnchor.constraint(equalTo: postImageView.bottomAnchor),
             stackView.widthAnchor.constraint(equalToConstant: 120),
             stackView.heightAnchor.constraint(equalToConstant: 50),
-            
         ])
         //likesLabel Layout
         NSLayoutConstraint.activate([
-            
             likesLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 4),
             likesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
-            
         ])
         //captionalLabel Layout
         NSLayoutConstraint.activate([
-            
             captionLabel.topAnchor.constraint(equalTo: likesLabel.bottomAnchor, constant: 4),
             captionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
-            
         ])
         //postTimeLabel Layout
         NSLayoutConstraint.activate([
-            
             postTimeLabel.topAnchor.constraint(equalTo: captionLabel.bottomAnchor, constant: 4),
             postTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
-            
         ])
     }
-    
+    private func configure(){
+        guard let viewModel = viewModel else{ return }
+        captionLabel.text = viewModel.caption
+        postImageView.sd_setImage(with: viewModel.imageUrl)
+    }
 }
 // MARK: - ACTIONS
 extension FeedCell {
     @objc func didTapUsername(){
         print("did tap username")
     }
-    
 }
