@@ -15,6 +15,7 @@ class UploadPostController: UIViewController {
     var selectedImage: UIImage?{
         didSet{ photoImageView.image = selectedImage }
     }
+    var currentUser: User?
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -95,9 +96,10 @@ extension UploadPostController{
     }
     @objc func didTapDone(_ sender: UIBarButtonItem){
         guard let image = selectedImage else{ return }
-        guard let caption = captionTextView.text else { return }
+        guard let caption = captionTextView.text else{ return }
+        guard let user = currentUser else{ return }
         showLoader(true)
-        PostService.uploadPost(caption: caption, image: image) { error in
+        PostService.uploadPost(caption: caption, image: image,user: user) { error in
             self.showLoader(false)
             if let error = error{
                 print("Failed to upload post with error \(error.localizedDescription)")
