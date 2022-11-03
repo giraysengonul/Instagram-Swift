@@ -70,7 +70,7 @@ extension FeedController : UICollectionViewDelegateFlowLayout{
 }
 // MARK: - Actions
 extension FeedController{
-    @objc func handleLogout(_ sender: UIBarButtonItem){
+    @objc private func handleLogout(_ sender: UIBarButtonItem){
         do{
             try Auth.auth().signOut()
             let controller = LoginController()
@@ -82,7 +82,7 @@ extension FeedController{
             print("Failed to sign out")
         }
     }
-    @objc private func handleRefresh(_ sender: UIRefreshControl){
+    @objc func handleRefresh(){
         posts?.removeAll()
         fetchPosts()
     }
