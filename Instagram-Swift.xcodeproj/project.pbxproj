@@ -39,6 +39,8 @@
 		C49D050E28AAB994004CA067 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D050D28AAB994004CA067 /* RegistrationController.swift */; };
 		C4AD42B728B25C6700F0AC44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */; };
 		C4EF094E28FB10F200DCEB45 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */; };
+		C4F25A022917FE0B002D66DF /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F25A012917FE0B002D66DF /* CommentController.swift */; };
+		C4F25A0429180000002D66DF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F25A0329180000002D66DF /* CommentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		C49D050D28AAB994004CA067 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
+		C4F25A012917FE0B002D66DF /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		C4F25A0329180000002D66DF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 				C492D34028A8227E00C39A24 /* NotificationController.swift */,
 				C492D34228A8229B00C39A24 /* ProfileController.swift */,
 				C43460532902632000562216 /* UploadPostController.swift */,
+				C4F25A012917FE0B002D66DF /* CommentController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				C43E0BBE28A9818600570E7B /* FeedCell.swift */,
 				C49AB6AA28AD578B00CEFE50 /* CustomTextField.swift */,
 				C405DDAA28FAF21E00D8F507 /* UserCell.swift */,
+				C4F25A0329180000002D66DF /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 				C430E32B28DB1C9E00DB0055 /* Constants.swift in Sources */,
 				C492D34328A8229B00C39A24 /* ProfileController.swift in Sources */,
 				C43460542902632000562216 /* UploadPostController.swift in Sources */,
+				C4F25A0429180000002D66DF /* CommentCell.swift in Sources */,
 				C430E32928DB1BC800DB0055 /* UserService.swift in Sources */,
 				C49AB6AB28AD578B00CEFE50 /* CustomTextField.swift in Sources */,
 				C41BC7BA28B2901B000825D1 /* Imageuploader.swift in Sources */,
@@ -370,6 +377,7 @@
 				C492D33B28A821C700C39A24 /* FeedController.swift in Sources */,
 				C49D050C28AAB98A004CA067 /* LoginController.swift in Sources */,
 				C40A617A28A7CB57005B97A8 /* AppDelegate.swift in Sources */,
+				C4F25A022917FE0B002D66DF /* CommentController.swift in Sources */,
 				C465A8C728C0E6D5006C4CD6 /* ProfileHeader.swift in Sources */,
 				C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */,
 				C492D33D28A8222C00C39A24 /* SearchController.swift in Sources */,

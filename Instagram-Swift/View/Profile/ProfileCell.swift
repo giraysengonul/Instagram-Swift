@@ -26,12 +26,9 @@ class ProfileCell: UICollectionViewCell{
         style()
         layout()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 }
 // MARK: - Helpers
 extension ProfileCell{
@@ -39,7 +36,6 @@ extension ProfileCell{
         //imageView Style
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
-        
     }
     private func layout(){
         //imageView Layout
