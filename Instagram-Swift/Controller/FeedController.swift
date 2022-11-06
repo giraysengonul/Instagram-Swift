@@ -13,6 +13,7 @@ class FeedController: UICollectionViewController {
     private var posts: [Post]? {
         didSet{ self.collectionView.reloadData() }
     }
+    var post: Post?
     // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class FeedController: UICollectionViewController {
     }
     // MARK: - API
     private func fetchPosts(){
+        guard post == nil else { return }
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
@@ -34,8 +36,10 @@ extension FeedController{
     private func setup(){
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        navigationItem.title = "Feed"
+        if post == nil{
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+            navigationItem.title = "Feed"
+        }
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView.refreshControl = refresher
@@ -47,14 +51,16 @@ extension FeedController{
 // MARK: - UICollectionViewDataSource
 extension FeedController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let posts = posts else{ return 0 }
-        return posts.count
+        guard let posts = posts else{ return 1 }
+        return post == nil ? posts.count : 1
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCell
-        if let posts = posts{
-            cell.viewModel = PostViewModel(post: posts[indexPath.row])
-        }
+        if let post = post{
+            cell.viewModel = PostViewModel(post: post)
+        }else{
+            guard let posts = posts else { return cell }
+            cell.viewModel = PostViewModel(post: posts[indexPath.row]) }
         return cell
     }
 }

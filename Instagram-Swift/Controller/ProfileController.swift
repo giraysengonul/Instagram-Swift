@@ -12,6 +12,7 @@ private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController {
     // MARK: - PROPERTIES
     private var user: User
+    private var posts = [Post]()
     // MARK: - LIFECYCLE
     init(user:User){
         self.user = user
@@ -27,6 +28,7 @@ class ProfileController: UICollectionViewController {
         layout()
         checkIsUserIsFollowed()
         fetchUserStats()
+        fetchPosts()
     }
     // MARK: - API
     private func checkIsUserIsFollowed(){
@@ -52,15 +54,21 @@ extension ProfileController{
     private func layout(){
         
     }
+    func fetchPosts(){
+        PostService.fetchPosts(forUser: user.uid) { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
+    }
 }
 // MARK: - UICollectionViewDataSource and UICollectionViewDelegate
 extension ProfileController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return posts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! ProfileCell
-        
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -69,8 +77,11 @@ extension ProfileController{
         header.delegate = self
         return header
     }
-    
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        controller.post = self.posts[indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ProfileController: UICollectionViewDelegateFlowLayout{

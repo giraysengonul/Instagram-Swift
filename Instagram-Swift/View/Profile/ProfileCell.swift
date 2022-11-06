@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 class ProfileCell: UICollectionViewCell{
     // MARK: - Properties
+    var viewModel: PostViewModel? {
+        didSet{ configure() }
+    }
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         let image = #imageLiteral(resourceName: "venom-7")
@@ -45,5 +49,9 @@ extension ProfileCell{
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+    }
+    private func configure(){
+        guard let viewModel = viewModel else { return }
+        imageView.sd_setImage(with: viewModel.imageUrl)
     }
 }
