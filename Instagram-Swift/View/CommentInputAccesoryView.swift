@@ -6,15 +6,18 @@
 //
 
 import UIKit
-class CommentInputAccessoryView: UIView {
+protocol CommentAccesoryViewDelegate: AnyObject {
+    func inputView(_ inputView: CommentInputAccesoryView, watsToUploadComment comment: String)
+}
+class CommentInputAccesoryView: UIView {
     // MARK: - Properties
+    weak var delegate: CommentAccesoryViewDelegate?
     private let commentTextView: InputTextView = {
         let textView = InputTextView()
         textView.placeholdertext = "Enter comment.."
         textView.font = UIFont.systemFont(ofSize: 15)
         textView.isScrollEnabled = false
         textView.placeholderShouldCenter = true
-        textView.backgroundColor = .secondarySystemBackground
         return textView
     }()
     private lazy var postButton: UIButton = {
@@ -44,9 +47,10 @@ class CommentInputAccessoryView: UIView {
     }
 }
 // MARK: - Helpers
-extension CommentInputAccessoryView{
+extension CommentInputAccesoryView{
     private func style(){
         autoresizingMask = .flexibleHeight
+        backgroundColor = .white
         //postButton style
         postButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(postButton)
@@ -80,10 +84,14 @@ extension CommentInputAccessoryView{
             trailingAnchor.constraint(equalTo: divider.trailingAnchor)
         ])
     }
+     func clearCommentTextView(){
+        commentTextView.text = nil
+        commentTextView.placeHolderLabel.isHidden = false
+    }
 }
 // MARK: - Selector
-extension CommentInputAccessoryView{
+extension CommentInputAccesoryView{
     @objc private func handleCommentUpload(_ sender: UIButton){
-        
+        delegate?.inputView(self, watsToUploadComment: commentTextView.text)
     }
 }

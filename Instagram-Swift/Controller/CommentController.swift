@@ -9,9 +9,10 @@ import UIKit
 private let reuseIdentifier = "CommentCell"
 class CommentController: UICollectionViewController {
     // MARK: - Properties
-    private lazy var commentInputView: CommentInputAccessoryView = {
+    private lazy var commentInputView: CommentInputAccesoryView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
-        let view = CommentInputAccessoryView(frame: frame)
+        let view = CommentInputAccesoryView(frame: frame)
+        view.delegate = self
         return view
     }()
     // MARK: - Lifecycle
@@ -39,6 +40,8 @@ extension CommentController{
     private func setup(){
         collectionView.backgroundColor = .white
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
         navigationItem.title = "Comments"
     }
     private func layout(){
@@ -59,5 +62,11 @@ extension CommentController{
 extension CommentController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
+    }
+}
+ // MARK: - CommentAccesoryViewDelegate
+extension CommentController: CommentAccesoryViewDelegate{
+    func inputView(_ inputView: CommentInputAccesoryView, watsToUploadComment comment: String) {
+        inputView.clearCommentTextView()
     }
 }
