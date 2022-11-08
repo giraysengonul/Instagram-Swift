@@ -16,11 +16,24 @@ class InputTextView: UITextView {
         label.textColor = .lightGray
         return label
     }()
+    var placeholderShouldCenter = true{
+        didSet{
+            if placeholderShouldCenter{
+                placeHolderLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+                placeHolderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
+                trailingAnchor.constraint(equalTo: placeHolderLabel.trailingAnchor).isActive = true
+            }else{
+                NSLayoutConstraint.activate([
+                    placeHolderLabel.topAnchor.constraint(equalTo: topAnchor,constant: 6),
+                    placeHolderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
+                ])
+            }
+        }
+    }
     // MARK: - Lifecycle
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         style()
-        layout()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,12 +50,5 @@ extension InputTextView{
         placeHolderLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(placeHolderLabel)
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextChange), name: UITextView.textDidChangeNotification, object: nil)
-    }
-    private func layout(){
-        //placeHolderLabel layout
-        NSLayoutConstraint.activate([
-            placeHolderLabel.topAnchor.constraint(equalTo: topAnchor,constant: 6),
-            placeHolderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
-        ])
     }
 }
