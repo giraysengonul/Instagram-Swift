@@ -8,6 +8,9 @@
 import UIKit
 class CommentCell: UICollectionViewCell{
     // MARK: - Properties
+    var viewModel: CommentViewModel?{
+        didSet{ configure() }
+    }
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -15,13 +18,7 @@ class CommentCell: UICollectionViewCell{
         imageView.backgroundColor = .lightGray
         return imageView
     }()
-    private let commentLabel : UILabel = {
-        let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "Hakki ",attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedString.append(NSAttributedString(string: "Some test Comment For Now...", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attributedString
-        return label
-    }()
+    private let commentLabel = UILabel()
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,6 +36,8 @@ extension CommentCell{
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(profileImageView)
         //commentLabel setup
+        commentLabel.numberOfLines = 0
+        commentLabel.lineBreakMode = .byWordWrapping
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(commentLabel)
     }
@@ -56,7 +55,12 @@ extension CommentCell{
             commentLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             commentLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor,
                                                   constant: 8),
-            commentLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            trailingAnchor.constraint(equalTo: commentLabel.trailingAnchor, constant: 8)
         ])
+    }
+    private func configure(){
+        guard let viewModel = self.viewModel else { return }
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        commentLabel.attributedText = viewModel.commnetLabelText()
     }
 }
