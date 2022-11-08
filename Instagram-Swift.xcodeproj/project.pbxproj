@@ -39,6 +39,8 @@
 		C49D050C28AAB98A004CA067 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D050B28AAB98A004CA067 /* LoginController.swift */; };
 		C49D050E28AAB994004CA067 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49D050D28AAB994004CA067 /* RegistrationController.swift */; };
 		C4AD42B728B25C6700F0AC44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */; };
+		C4DE5114291A5C7C00731A41 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE5113291A5C7C00731A41 /* CommentService.swift */; };
+		C4DE5116291A6FCC00731A41 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DE5115291A6FCC00731A41 /* Comment.swift */; };
 		C4EF094E28FB10F200DCEB45 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */; };
 		C4F25A022917FE0B002D66DF /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F25A012917FE0B002D66DF /* CommentController.swift */; };
 		C4F25A0429180000002D66DF /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F25A0329180000002D66DF /* CommentCell.swift */; };
@@ -81,6 +83,8 @@
 		C49D050B28AAB98A004CA067 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		C49D050D28AAB994004CA067 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		C4AD42B628B25C6700F0AC44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C4DE5113291A5C7C00731A41 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
+		C4DE5115291A6FCC00731A41 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		C4F25A012917FE0B002D66DF /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		C4F25A0329180000002D66DF /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 			children = (
 				C430E32C28DB1EF600DB0055 /* User.swift */,
 				C469E85F290D30FF00762D6E /* Post.swift */,
+				C4DE5115291A6FCC00731A41 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				C41BC7BB28B2902E000825D1 /* AuthService.swift */,
 				C430E32828DB1BC800DB0055 /* UserService.swift */,
 				C455313D290BE9A9003D5CD6 /* PostService.swift */,
+				C4DE5113291A5C7C00731A41 /* CommentService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -381,12 +387,14 @@
 				C492D33B28A821C700C39A24 /* FeedController.swift in Sources */,
 				C49D050C28AAB98A004CA067 /* LoginController.swift in Sources */,
 				C40A617A28A7CB57005B97A8 /* AppDelegate.swift in Sources */,
+				C4DE5114291A5C7C00731A41 /* CommentService.swift in Sources */,
 				C4F25A022917FE0B002D66DF /* CommentController.swift in Sources */,
 				C465A8C728C0E6D5006C4CD6 /* ProfileHeader.swift in Sources */,
 				C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */,
 				C492D33D28A8222C00C39A24 /* SearchController.swift in Sources */,
 				C434605629026D3F00562216 /* InputTextView.swift in Sources */,
 				C41BC7BC28B2902E000825D1 /* AuthService.swift in Sources */,
+				C4DE5116291A6FCC00731A41 /* Comment.swift in Sources */,
 				C465A8C528C0E6BC006C4CD6 /* ProfileCell.swift in Sources */,
 				C49D050E28AAB994004CA067 /* RegistrationController.swift in Sources */,
 				C455313E290BE9A9003D5CD6 /* PostService.swift in Sources */,

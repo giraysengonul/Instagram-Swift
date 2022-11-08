@@ -9,6 +9,8 @@ import UIKit
 private let reuseIdentifier = "CommentCell"
 class CommentController: UICollectionViewController {
     // MARK: - Properties
+    private let post: Post
+    private var comments = [Comment]()
     private lazy var commentInputView: CommentInputAccesoryView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let view = CommentInputAccesoryView(frame: frame)
@@ -16,10 +18,18 @@ class CommentController: UICollectionViewController {
         return view
     }()
     // MARK: - Lifecycle
+    init(post: Post) {
+        self.post = post
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         layout()
+        fetchComments()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +43,15 @@ class CommentController: UICollectionViewController {
     }
     override var canBecomeFirstResponder: Bool{
         return true
+    }
+}
+// MARK: - API
+extension CommentController{
+    func fetchComments() {
+        CommentService.fetchComments(forPost: post.postId) { comments in
+            self.comments = comments
+            self.collectionView.reloadData()
+        }
     }
 }
 // MARK: - Helpers
@@ -51,7 +70,7 @@ extension CommentController{
 // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
 extension CommentController{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return comments.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
@@ -64,9 +83,15 @@ extension CommentController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: view.frame.width, height: 80)
     }
 }
- // MARK: - CommentAccesoryViewDelegate
+// MARK: - CommentAccesoryViewDelegate
 extension CommentController: CommentAccesoryViewDelegate{
     func inputView(_ inputView: CommentInputAccesoryView, watsToUploadComment comment: String) {
-        inputView.clearCommentTextView()
+        guard let tabController = self.tabBarController as? MainController else{ return }
+        guard let user = tabController.user else { return }
+        showLoader(true)
+        CommentService.uploadComment(comment: comment, postId: post.postId, user: user) { error in
+            inputView.clearCommentTextView()
+            self.showLoader(false)
+        }
     }
 }

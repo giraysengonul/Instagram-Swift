@@ -10,7 +10,7 @@ import FirebaseAuth
 import YPImagePicker
 class MainController: UITabBarController {
     // MARK: - PROPERTIES
-    private var user: User?{
+     var user: User?{
         didSet{
             guard let user = user else { return }
             setup(withUser: user) }
