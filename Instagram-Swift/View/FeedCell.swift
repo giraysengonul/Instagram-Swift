@@ -38,7 +38,7 @@ class FeedCell: UICollectionViewCell {
         imageView.image = #imageLiteral(resourceName: "venom-7")
         return imageView
     }()
-    private lazy var likeButton: UIButton = {
+     lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "like_unselected")
         button.setImage(image, for: .normal)
