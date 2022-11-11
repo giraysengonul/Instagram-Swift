@@ -27,8 +27,17 @@ class FeedController: UICollectionViewController {
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
-            self.collectionView.reloadData()
+            self.checkIfUserLikePost()
         }
+    }
+    private func checkIfUserLikePost(){
+        self.posts?.forEach({ post in
+            PostService.checkIfUserLikedPost(post: post) { didLike in
+                if let index = self.posts?.firstIndex(where: { $0.postId == post.postId }){
+                    self.posts?[index].didLike = didLike
+                }
+            }
+        })
     }
 }
 // MARK: - HELPERS
@@ -107,12 +116,14 @@ extension FeedController: FeedCellDelegate{
                 let image = #imageLiteral(resourceName: "like_unselected")
                 cell.likeButton.setImage(image, for: .normal)
                 cell.likeButton.tintColor = .black
+                cell.viewModel?.post.likes = post.likes - 1
             }
         }else{
             PostService.likePost(post: post) { error in
                 let image = #imageLiteral(resourceName: "like_selected")
                 cell.likeButton.setImage(image, for: .normal)
                 cell.likeButton.tintColor = .red
+                cell.viewModel?.post.likes = post.likes + 1
             }
         }
     }

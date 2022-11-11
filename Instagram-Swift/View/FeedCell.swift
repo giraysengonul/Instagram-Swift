@@ -38,7 +38,7 @@ class FeedCell: UICollectionViewCell {
         imageView.image = #imageLiteral(resourceName: "venom-7")
         return imageView
     }()
-     lazy var likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton(type: .system)
         let image = #imageLiteral(resourceName: "like_unselected")
         button.setImage(image, for: .normal)
@@ -168,6 +168,8 @@ extension FeedCell{
         profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
         usernameButton.setTitle(viewModel.username, for: .normal)
         likesLabel.text = viewModel.likesLabelText
+        likeButton.tintColor = viewModel.likeButtonTintColor
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
     }
 }
 // MARK: - ACTIONS
