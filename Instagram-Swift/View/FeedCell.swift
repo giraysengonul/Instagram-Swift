@@ -9,6 +9,7 @@ import UIKit
 protocol FeedCellDelegate: AnyObject{
     func cell(_ cell: FeedCell, WantsToShowCommentsFor post: Post)
     func cell(_ cell: FeedCell, didLike post: Post)
+    func cell(_ cell: FeedCell, watsToShowProfileFor uid: String)
 }
 class FeedCell: UICollectionViewCell {
     // MARK: - PROPERTIES
@@ -16,11 +17,14 @@ class FeedCell: UICollectionViewCell {
         didSet{ configure() }
     }
     weak var delegate: FeedCellDelegate?
-    let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
+        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
     private lazy var usernameButton: UIButton = {
@@ -174,8 +178,13 @@ extension FeedCell{
 }
 // MARK: - ACTIONS
 extension FeedCell {
+    @objc func showUserProfile(){
+        guard let viewModel = self.viewModel else { return }
+        delegate?.cell(self, watsToShowProfileFor: viewModel.post.ownerUid)
+    }
     @objc func didTapUsername(){
-        print("did tap username")
+        guard let viewModel = self.viewModel else { return }
+        delegate?.cell(self, watsToShowProfileFor: viewModel.post.ownerUid)
     }
     @objc func didTapComments(_ sender: UIButton){
         guard let viewModel = viewModel else { return }

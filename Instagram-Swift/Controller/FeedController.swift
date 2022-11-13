@@ -26,8 +26,8 @@ class FeedController: UICollectionViewController {
         guard post == nil else { return }
         PostService.fetchPosts { posts in
             self.posts = posts
-            self.collectionView.refreshControl?.endRefreshing()
             self.checkIfUserLikePost()
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
     private func checkIfUserLikePost(){
@@ -105,6 +105,13 @@ extension FeedController{
 }
 // MARK: - FeedCellDelegate
 extension FeedController: FeedCellDelegate{
+    func cell(_ cell: FeedCell, watsToShowProfileFor uid: String) {
+        UserService.fetchUser(withUid: uid) { user in
+            let controller = ProfileController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
     func cell(_ cell: FeedCell, WantsToShowCommentsFor post: Post) {
         let controller = CommentController(post: post)
         navigationController?.pushViewController(controller, animated: true)
