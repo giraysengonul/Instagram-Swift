@@ -24,6 +24,7 @@
 		C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E0BBE28A9818600570E7B /* FeedCell.swift */; };
 		C451A8E1290EEBF900130841 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C451A8E0290EEBF900130841 /* PostViewModel.swift */; };
 		C455313E290BE9A9003D5CD6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C455313D290BE9A9003D5CD6 /* PostService.swift */; };
+		C45E666C29216A340015E187 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45E666B29216A340015E187 /* NotificationService.swift */; };
 		C465A8C528C0E6BC006C4CD6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465A8C428C0E6BC006C4CD6 /* ProfileCell.swift */; };
 		C465A8C728C0E6D5006C4CD6 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465A8C628C0E6D5006C4CD6 /* ProfileHeader.swift */; };
 		C469E860290D30FF00762D6E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C469E85F290D30FF00762D6E /* Post.swift */; };
@@ -71,6 +72,7 @@
 		C43E0BBE28A9818600570E7B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C451A8E0290EEBF900130841 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		C455313D290BE9A9003D5CD6 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		C45E666B29216A340015E187 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C465A8C428C0E6BC006C4CD6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C465A8C628C0E6D5006C4CD6 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		C469E85F290D30FF00762D6E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				C430E32828DB1BC800DB0055 /* UserService.swift */,
 				C455313D290BE9A9003D5CD6 /* PostService.swift */,
 				C4DE5113291A5C7C00731A41 /* CommentService.swift */,
+				C45E666B29216A340015E187 /* NotificationService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				C43460542902632000562216 /* UploadPostController.swift in Sources */,
 				C4F25A0429180000002D66DF /* CommentCell.swift in Sources */,
 				C430E32928DB1BC800DB0055 /* UserService.swift in Sources */,
+				C45E666C29216A340015E187 /* NotificationService.swift in Sources */,
 				C49AB6AB28AD578B00CEFE50 /* CustomTextField.swift in Sources */,
 				C41BC7BA28B2901B000825D1 /* Imageuploader.swift in Sources */,
 				C451A8E1290EEBF900130841 /* PostViewModel.swift in Sources */,
