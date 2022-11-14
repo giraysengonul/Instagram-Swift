@@ -8,6 +8,9 @@
 import UIKit
 class NotificationCell: UITableViewCell {
     // MARK: - Properties
+    var viewModel: NotificationViewModel?{
+        didSet{ configure() }
+    }
     private let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -18,7 +21,7 @@ class NotificationCell: UITableViewCell {
     private let infoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Hakkı"
+        label.numberOfLines = 0
         return label
     }()
     private lazy var postImageView: UIImageView = {
@@ -82,7 +85,8 @@ extension NotificationCell{
         //infoLabel layout
         NSLayoutConstraint.activate([
             infoLabel.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
-            infoLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 8)
+            infoLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 8),
+            postImageView.trailingAnchor.constraint(equalTo: infoLabel.trailingAnchor)
         ])
         //followButton layout
         NSLayoutConstraint.activate([
@@ -98,6 +102,12 @@ extension NotificationCell{
             postImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             trailingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: 12)
         ])
+    }
+    private func configure(){
+        guard let viewModel = self.viewModel else{ return }
+        profileImage.sd_setImage(with: viewModel.profileImageUrl)
+        postImageView.sd_setImage(with: viewModel.postImageUrl)
+        infoLabel.attributedText = viewModel.notificationMessage
     }
 }
 // MARK: - Selector

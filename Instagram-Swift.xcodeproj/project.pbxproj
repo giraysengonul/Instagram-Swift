@@ -22,6 +22,7 @@
 		C43460542902632000562216 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43460532902632000562216 /* UploadPostController.swift */; };
 		C434605629026D3F00562216 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C434605529026D3F00562216 /* InputTextView.swift */; };
 		C43E0BBF28A9818600570E7B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43E0BBE28A9818600570E7B /* FeedCell.swift */; };
+		C43EBE9E292225F80073BD53 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43EBE9D292225F80073BD53 /* NotificationViewModel.swift */; };
 		C451A8E1290EEBF900130841 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C451A8E0290EEBF900130841 /* PostViewModel.swift */; };
 		C455313E290BE9A9003D5CD6 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C455313D290BE9A9003D5CD6 /* PostService.swift */; };
 		C45E666C29216A340015E187 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45E666B29216A340015E187 /* NotificationService.swift */; };
@@ -70,6 +71,7 @@
 		C43460532902632000562216 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
 		C434605529026D3F00562216 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		C43E0BBE28A9818600570E7B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		C43EBE9D292225F80073BD53 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		C451A8E0290EEBF900130841 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		C455313D290BE9A9003D5CD6 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		C45E666B29216A340015E187 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				C4EF094D28FB10F200DCEB45 /* UserCellViewModel.swift */,
 				C451A8E0290EEBF900130841 /* PostViewModel.swift */,
 				C4DE5117291A83A600731A41 /* CommentViewModel.swift */,
+				C43EBE9D292225F80073BD53 /* NotificationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				C405DDAB28FAF21E00D8F507 /* UserCell.swift in Sources */,
 				C469E860290D30FF00762D6E /* Post.swift in Sources */,
 				C492D33F28A8225C00C39A24 /* ImageSelectorController.swift in Sources */,
+				C43EBE9E292225F80073BD53 /* NotificationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
