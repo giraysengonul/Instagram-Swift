@@ -86,12 +86,12 @@ extension NotificationCell{
         NSLayoutConstraint.activate([
             infoLabel.centerYAnchor.constraint(equalTo: profileImage.centerYAnchor),
             infoLabel.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 8),
-            postImageView.trailingAnchor.constraint(equalTo: infoLabel.trailingAnchor)
+            followButton.leadingAnchor.constraint(equalTo: infoLabel.trailingAnchor, constant: 4)
         ])
         //followButton layout
         NSLayoutConstraint.activate([
             followButton.heightAnchor.constraint(equalToConstant: 32),
-            followButton.widthAnchor.constraint(equalToConstant: 100),
+            followButton.widthAnchor.constraint(equalToConstant: 88),
             followButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             trailingAnchor.constraint(equalTo: followButton.trailingAnchor, constant: 12)
         ])
@@ -108,6 +108,8 @@ extension NotificationCell{
         profileImage.sd_setImage(with: viewModel.profileImageUrl)
         postImageView.sd_setImage(with: viewModel.postImageUrl)
         infoLabel.attributedText = viewModel.notificationMessage
+        followButton.isHidden = !viewModel.shouldHidePostImage
+        postImageView.isHidden = viewModel.shouldHidePostImage
     }
 }
 // MARK: - Selector
