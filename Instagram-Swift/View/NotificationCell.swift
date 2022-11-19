@@ -6,8 +6,14 @@
 //
 
 import UIKit
+protocol NotificationCellDelegate: AnyObject {
+    func cell(_ cell: NotificationCell, watsToFollow uid: String)
+    func cell(_ cell: NotificationCell, watsToUnfollow uid: String)
+    func cell(_ cell: NotificationCell, watsToViewPost postId: String)
+}
 class NotificationCell: UITableViewCell {
     // MARK: - Properties
+    weak var delegate: NotificationCellDelegate?
     var viewModel: NotificationViewModel?{
         didSet{ configure() }
     }
@@ -110,6 +116,9 @@ extension NotificationCell{
         infoLabel.attributedText = viewModel.notificationMessage
         followButton.isHidden = !viewModel.shouldHidePostImage
         postImageView.isHidden = viewModel.shouldHidePostImage
+        followButton.setTitle(viewModel.followButtonText, for: .normal)
+        followButton.backgroundColor = viewModel.followButtonBackgroundColor
+        followButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
     }
 }
 // MARK: - Selector
@@ -118,6 +127,7 @@ extension NotificationCell{
         
     }
     @objc private func handlePostTapped(){
-        
+        guard let postId = self.viewModel?.notification.postId else{ return }
+        delegate?.cell(self, watsToViewPost: postId)
     }
 }
